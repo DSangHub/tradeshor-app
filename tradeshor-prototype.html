@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tradeshor.app Prototype — Listing & Bidding Demo</title>
+  <style>
+    :root { --navy: #0a2540; --teal: #00c2b8; --light: #f8fafc; --gray: #64748b; }
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; margin: 0; background: var(--light); color: #1e293b; }
+    header { background: var(--navy); color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-weight: 700; font-size: 1.4rem; } .logo span { color: var(--teal); }
+    .container { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    .card { background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+    h1, h2 { color: var(--navy); }
+    label { display: block; margin: 0.75rem 0 0.25rem; font-weight: 600; }
+    input, select, textarea { width: 100%; padding: 0.6rem; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 1rem; }
+    button, .btn { background: var(--teal); color: var(--navy); border: none; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 700; cursor: pointer; margin-top: 1rem; }
+    button:hover { opacity: 0.9; }
+    .bid { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; border-bottom: 1px solid #e2e8f0; }
+    .bid-amount { font-weight: 700; color: var(--teal); font-size: 1.2rem; }
+    .status { font-size: 0.85rem; color: var(--gray); }
+    .geo { font-size: 0.9rem; color: var(--gray); margin-top: 0.5rem; }
+    .success { background: #d1fae5; color: #065f46; padding: 1rem; border-radius: 8px; margin-top: 1rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">tradeshor<span>.app</span> Prototype</div>
+    <div>Owner Demo</div>
+  </header>
+
+  <div class="container">
+    <div class="card">
+      <h1>List Your Vehicle for Bids</h1>
+      <p>Create account (demo) → add details → Add to Bids. Dealers anywhere can submit firm offers pending inspection.</p>
+      
+      <form id="listForm">
+        <label>Year</label>
+        <input type="number" id="year" value="2021" required>
+        <label>Make</label>
+        <input type="text" id="make" value="Toyota" required>
+        <label>Model</label>
+        <input type="text" id="model" value="Camry" required>
+        <label>Miles</label>
+        <input type="number" id="miles" value="34567" required>
+        <label>Condition</label>
+        <select id="condition">
+          <option>Excellent</option>
+          <option selected>Good</option>
+          <option>Fair</option>
+          <option>Poor</option>
+        </select>
+        <label>Notes (optional)</label>
+        <textarea id="notes" rows="2">Clean title, backup camera, Bluetooth.</textarea>
+        <button type="button" onclick="getLocation()">Use My Location (Geolocation)</button>
+        <div class="geo" id="geoStatus">Location not set — dealers can still bid from any distance.</div>
+        <button type="submit">Add to Bids</button>
+      </form>
+      <div id="formResult"></div>
+    </div>
+
+    <div class="card">
+      <h2>Vehicles up for Bidding (Live Demo)</h2>
+      <div id="biddingColumn">
+        <div class="bid">
+          <div><strong>2021 Toyota Camry</strong><br><span class="status">34,567 mi · Good · Sacramento area</span></div>
+          <div class="bid-amount">$19,250</div>
+        </div>
+        <div class="bid">
+          <div><strong>2019 Honda CR-V</strong><br><span class="status">48,210 mi · Excellent</span></div>
+          <div class="bid-amount">$22,800</div>
+        </div>
+      </div>
+      <p style="margin-top:1rem; font-size:0.9rem; color:var(--gray);">Notifications: New bid alerts would appear here via email/SMS in the full app.</p>
+    </div>
+
+    <div class="card">
+      <h2>Backend Coverage (1-6)</h2>
+      <ol>
+        <li><strong>Auth & Profiles</strong> — Owner/Dealer accounts (email, phone, verification for dealers).</li>
+        <li><strong>Vehicle Listing</strong> — Year/make/model/miles/condition + “Add to Bids”.</li>
+        <li><strong>Bidding Column</strong> — Active vehicles with firm offers pending inspection.</li>
+        <li><strong>Geolocation</strong> — Owner location for relevance; dealers at any distance.</li>
+        <li><strong>Notifications</strong> — New bids, offer accepted, inspection ready.</li>
+        <li><strong>Tech Stack</strong> — Supabase (auth + Postgres + realtime) or Firebase; Vercel/Hostinger hosting; optional VIN decode.</li>
+      </ol>
+      <p>Full schema: see tradeshor-data-model.md</p>
+    </div>
+  </div>
+
+  <script>
+    function getLocation() {
+      const status = document.getElementById('geoStatus');
+      if (navigator.geolocation) {
+        status.textContent = 'Requesting location...';
+        navigator.geolocation.getCurrentPosition(
+          (pos) => {
+            status.textContent = `Location set: ${pos.coords.latitude.toFixed(4)}, ${pos.coords.longitude.toFixed(4)} (dealers any distance can still bid).`;
+          },
+          () => { status.textContent = 'Location denied — listing still open to all dealers.'; }
+        );
+      } else {
+        status.textContent = 'Geolocation not supported.';
+      }
+    }
+
+    document.getElementById('listForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const year = document.getElementById('year').value;
+      const make = document.getElementById('make').value;
+      const model = document.getElementById('model').value;
+      const miles = document.getElementById('miles').value;
+      const condition = document.getElementById('condition').value;
+      const result = document.getElementById('formResult');
+      result.innerHTML = `<div class="success"><strong>Added to Bids!</strong><br>${year} ${make} ${model} (${miles} mi, ${condition}) is now visible to dealers. Firm offers pending inspection will appear in the bidding column. You can sell to the highest bidder and buy elsewhere.</div>`;
+      
+      // Mock add to column
+      const col = document.getElementById('biddingColumn');
+      const newBid = document.createElement('div');
+      newBid.className = 'bid';
+      newBid.innerHTML = `<div><strong>${year} ${make} ${model}</strong><br><span class="status">${miles} mi · ${condition} · Just listed</span></div><div class="bid-amount">Waiting for bids</div>`;
+      col.prepend(newBid);
+    });
+  </script>
+</body>
+</html>
