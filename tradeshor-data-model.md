@@ -26,6 +26,9 @@
 - location_lat: float
 - location_lng: float
 - is_verified: boolean
+- is_premier: boolean (default false)
+- premier_radius_miles: integer (15–30)
+- preferred_makes_models: jsonb (array of up to 5 make/model pairs)
 - created_at: timestamp
 
 ### vehicles
@@ -69,6 +72,7 @@
 - One vehicle → many bids
 - One dealer → many bids
 - Geolocation used for relevance ranking but not hard filtering (dealers any distance)
+- Premier dealers receive early alerts for matching vehicles within 15–30 miles of their location (up to 5 preferred make/model pairs). $75 fee per vehicle purchased.
 
 ## Tech Notes (MVP)
 - Auth: Supabase Auth or Firebase Auth (email + magic link / OTP)
