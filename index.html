@@ -3,189 +3,188 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>tradeshor.app — Get Real Dealer Bids on Your Trade-In</title>
-  <meta name="description" content="List your vehicle and let local (and any-distance) dealers compete with firm offers. Don't accept the first lowball. Sell to the highest bidder and buy wherever you want.">
+  <title>TradeShort.app | Short Your Vehicle Payoff – See the Real Worth</title>
+  <meta name="description" content="Don't go to the dealer blindfolded. List your vehicle details on TradeShort.app and we shop it for high bids to reduce your payoff. Current lenders and dealers may short it to keep the business.">
   <style>
     :root {
-      --navy: #0a2540;
-      --teal: #00c2b8;
-      --light: #f8fafc;
-      --gray: #64748b;
-      --dark: #1e293b;
+      --primary: #0f2c4c;
+      --accent: #e63946;
+      --secondary: #457b9d;
+      --light: #f1faee;
+      --dark: #1d3557;
+      --gray: #6c757d;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--dark); line-height: 1.6; background: #fff; }
-    header { background: var(--navy); color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
-    .logo { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.5px; }
-    .logo span { color: var(--teal); }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; line-height: 1.6; color: #333; background: #fff; }
+    header { background: var(--primary); color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    header h1 { font-size: 1.6rem; font-weight: 700; }
+    header h1 span { color: var(--accent); }
     nav a { color: white; text-decoration: none; margin-left: 1.5rem; font-size: 0.95rem; }
-    nav a:hover { color: var(--teal); }
-    .hero { background: linear-gradient(135deg, #0a2540 0%, #1e3a5f 100%); color: white; padding: 5rem 2rem 4rem; text-align: center; }
-    .hero h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; line-height: 1.15; margin-bottom: 1rem; }
-    .hero p.lead { font-size: 1.25rem; max-width: 720px; margin: 0 auto 2rem; opacity: 0.95; }
-    .cta { display: inline-block; background: var(--teal); color: var(--navy); padding: 0.9rem 2rem; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 1.1rem; transition: transform 0.15s; }
-    .cta:hover { transform: translateY(-2px); }
-    .cta.secondary { background: transparent; border: 2px solid var(--teal); color: white; margin-left: 1rem; }
-    .hero-img { max-width: 1100px; margin: 3rem auto 0; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-    .hero-img img { width: 100%; display: block; }
-    section { padding: 4.5rem 2rem; }
-    .container { max-width: 1100px; margin: 0 auto; }
-    h2 { font-size: 2.2rem; text-align: center; margin-bottom: 1rem; color: var(--navy); }
-    .subtitle { text-align: center; color: var(--gray); max-width: 640px; margin: 0 auto 3rem; }
-    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; }
-    .step { background: var(--light); padding: 2rem; border-radius: 12px; text-align: center; }
-    .step-num { width: 48px; height: 48px; background: var(--teal); color: var(--navy); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.4rem; margin: 0 auto 1rem; }
-    .benefits { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-    .benefit { padding: 1.5rem; border-left: 4px solid var(--teal); }
-    .benefit h3 { margin-bottom: 0.5rem; color: var(--navy); }
-    .bidding-column { background: var(--light); padding: 2rem; border-radius: 12px; margin-top: 2rem; }
-    .vehicle-card { background: white; padding: 1.25rem; border-radius: 8px; margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-    .bid-amount { font-weight: 700; color: var(--teal); font-size: 1.2rem; }
-    footer { background: var(--navy); color: white; padding: 3rem 2rem; text-align: center; }
-    footer a { color: var(--teal); }
-    .phone-mock { max-width: 320px; margin: 2rem auto; border-radius: 24px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
-    @media (max-width: 640px) {
-      header { flex-direction: column; gap: 0.75rem; }
-      nav a { margin: 0 0.75rem; }
-      .cta.secondary { margin-left: 0; margin-top: 0.75rem; display: block; }
+    .coming-soon { background: #e8f4fd; border: 1px solid #b8daff; border-radius: 10px; padding: 1.5rem; margin: 2rem 0; }
+    .coming-soon h4 { color: var(--primary); margin-bottom: 0.5rem; }
+    .badge { background: var(--accent); color: white; font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 12px; margin-left: 0.5rem; vertical-align: middle; }
+    .hero { background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%); color: white; padding: 4rem 2rem; text-align: center; }
+    .hero h2 { font-size: 2.4rem; margin-bottom: 1rem; font-weight: 800; }
+    .hero p { font-size: 1.2rem; max-width: 800px; margin: 0 auto 2rem; opacity: 0.95; }
+    .cta-btn { background: var(--accent); color: white; padding: 0.9rem 2rem; border: none; border-radius: 6px; font-size: 1.1rem; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; }
+    .cta-btn:hover { background: #c1121f; }
+    section { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; }
+    section h3 { font-size: 2rem; color: var(--primary); margin-bottom: 1.5rem; text-align: center; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem; }
+    .card { background: var(--light); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--accent); }
+    .card h4 { color: var(--dark); margin-bottom: 0.5rem; }
+    .highlight { background: #fff3cd; border-left: 4px solid #ffc107; padding: 1.5rem; margin: 2rem 0; border-radius: 6px; }
+    footer { background: var(--primary); color: white; text-align: center; padding: 2rem; font-size: 0.9rem; }
+    .form-group { margin-bottom: 1.2rem; text-align: left; max-width: 400px; margin-left: auto; margin-right: auto; }
+    .form-group label { display: block; margin-bottom: 0.3rem; font-weight: 600; color: var(--dark); }
+    .form-group input, .form-group select { width: 100%; padding: 0.7rem; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem; }
+    .form-group select { background: white; }
+    form { max-width: 500px; margin: 0 auto; }
+    @media (max-width: 600px) {
+      .hero h2 { font-size: 1.8rem; }
+      header { flex-direction: column; gap: 0.5rem; }
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="logo">tradeshor<span>.app</span></div>
+    <h1>Trade<span>Short</span>.app</h1>
     <nav>
       <a href="#how">How It Works</a>
-      <a href="#owners">For Owners</a>
-      <a href="#dealers">For Dealers</a>
-      <a href="#bids">Vehicles Up for Bidding</a>
+      <a href="#membership">Membership</a>
+      <a href="#who">Who Benefits</a>
+      <a href="#cta">Get Started</a>
     </nav>
   </header>
 
   <section class="hero">
-    <div class="container">
-      <h1>Want to trade in your current vehicle and not sure if you qualify or are upside down with negative equity?</h1>
-      <p class="lead">Create an account and list your vehicle details — year, make, model, miles and condition. We send the details to local auto dealers and get you a firm offer pending physical inspection. Used vehicles are in high demand. Don't drive up to a random dealer and let them tell you what your vehicle is worth.</p>
-      <a href="#owners" class="cta">Post Your Vehicle & Get Bids</a>
-      <a href="#dealers" class="cta secondary">Dealers: Join the Network</a>
-    </div>
-    <div class="hero-img">
-      <img src="imagine_images/gaMt9.jpg" alt="Live dealer bids on a vehicle trade-in">
-    </div>
+    <h2>Short Your Vehicle Payoff.<br>Don’t Go to the Dealer Blindfolded.</h2>
+    <p>Become a TradeShort member and get the benefits. Shop your vehicle at any time to see potential drops in payoff. Trade it in faster with a lower payoff — without going to the dealer blindfolded. Inspired by 2008 short sales, now for vehicles with a loan or lien.</p>
+    <a href="#cta" class="cta-btn">Check Your Options — See the Real Worth</a>
   </section>
 
   <section id="how">
-    <div class="container">
-      <h2>How tradeshor.app Works</h2>
-      <p class="subtitle">Some dealers are paying above Blue Book and market value for popular vehicles. Your vehicle may be worth more than what dealers tell you. You can even sell to the highest bidding dealer and buy a vehicle at another dealer.</p>
-      <div class="steps">
-        <div class="step">
-          <div class="step-num">1</div>
-          <h3>List Your Vehicle</h3>
-          <p>Owner creates a profile, adds year/make/model/miles/condition, and clicks “Add to Bids.”</p>
-        </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <h3>Dealers Compete</h3>
-          <p>Details go out to participating dealers (local + any distance). They submit firm offers pending inspection.</p>
-        </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <h3>Choose the Best Offer</h3>
-          <p>Review bids, accept the highest, complete inspection, and get paid. Buy your next vehicle anywhere.</p>
-        </div>
+    <h3>How TradeShort Works</h3>
+    <div class="grid">
+      <div class="card">
+        <h4>1. List Your Details</h4>
+        <p>Year, make, model, miles, condition, current payoff, and credit basics. We keep it private and compliant.</p>
       </div>
-      <div class="phone-mock">
-        <img src="imagine_images/qOHIj.jpg" alt="App vehicle listing and dealer bids" style="width:100%;">
+      <div class="card">
+        <h4>2. We Shop the Bid</h4>
+        <p>Current lender/owner (L/O) and auto/equipment dealers compete. Pre-owned demand is high — someone may short the payoff to win the deal.</p>
+      </div>
+      <div class="card">
+        <h4>3. Reduce & Rebuild</h4>
+        <p>A short (typically up to $750–$1,500 depending on credit, vehicle, and circumstances) generates a new loan and new possibilities if conditions are met.</p>
       </div>
     </div>
   </section>
 
-  <section id="owners" style="background: var(--light);">
-    <div class="container">
-      <h2>For Vehicle Owners</h2>
-      <div class="benefits">
-        <div class="benefit">
-          <h3>Real Firm Offers</h3>
-          <p>Not vague appraisals. Dealers submit firm offers that stand pending physical inspection.</p>
-        </div>
-        <div class="benefit">
-          <h3>Negative Equity Clarity</h3>
-          <p>See where you stand before walking into a dealership. Know if you’re upside down.</p>
-        </div>
-        <div class="benefit">
-          <h3>Highest Bidder Wins</h3>
-          <p>Sell to the highest offer and purchase your next vehicle from whichever dealer gives you the best overall deal.</p>
-        </div>
-        <div class="benefit">
-          <h3>Geolocation + Reach</h3>
-          <p>Your location is used for relevance, but dealers at any distance can bid — maximizing competition.</p>
-        </div>
+  <section id="membership">
+    <h3>Become a Member <span class="badge">Coming Soon</span></h3>
+    <p style="text-align: center; max-width: 800px; margin: 0 auto 1.5rem;">Become a TradeShort member and get the benefits. Shop your vehicle at any time to see the potential drop in payoff. You can trade it in faster with a lower payoff. Membership gives you ongoing access to the bidding platform so you stay informed and ready.</p>
+    
+    <div class="coming-soon">
+      <h4>Currently in Compliance Review</h4>
+      <p>Membership is being structured like a service membership (similar to auto club models) with clear legal guardrails. It is <strong>not</strong> GAP insurance, not a guaranteed payoff reduction, and not insurance. Benefits depend on vehicle details, credit, market conditions, lender/dealer participation, and final regulatory approval. We are working with appropriate partners and counsel to ensure full compliance before launch.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h4>Member Benefits</h4>
+        <p>Shop your vehicle anytime. See competitive bids that may lower the amount needed to cover your payoff. Trade faster when the numbers make sense.</p>
+      </div>
+      <div class="card">
+        <h4>What It Is Not</h4>
+        <p>Not GAP, not insurance, and not a promise of any specific short or new financing. Any reduction comes from lenders or dealers, not the membership itself.</p>
+      </div>
+      <div class="card">
+        <h4>Status</h4>
+        <p>Coming soon — waiting final compliance clearance. Sign up below for updates on membership launch.</p>
       </div>
     </div>
   </section>
 
-  <section id="dealers">
-    <div class="container">
-      <h2>For Dealers</h2>
-      <p class="subtitle">Access a steady stream of pre-qualified trade-in vehicles. Bid on the ones that fit your inventory needs.</p>
-      <div class="benefits">
-        <div class="benefit">
-          <h3>Dealer Profiles</h3>
-          <p>Verified dealer accounts with bidding history and inventory preferences.</p>
-        </div>
-        <div class="benefit">
-          <h3>Vehicles Up for Bidding</h3>
-          <p>Dedicated column of active listings. Filter by year, make, model, miles, location, and condition.</p>
-        </div>
-        <div class="benefit">
-          <h3>Any Distance</h3>
-          <p>Bid on vehicles outside your immediate market when the numbers make sense.</p>
-        </div>
+  <section id="who">
+    <h3>Who Wins?</h3>
+    <div class="grid">
+      <div class="card">
+        <h4>Vehicle Owners</h4>
+        <p>Discover the real worth of your vehicle and your credit before you walk into a dealership. You may be trading in a diamond without knowing it.</p>
       </div>
+      <div class="card">
+        <h4>Current Lenders / Owners</h4>
+        <p>Short it to keep a good-paying customer. Make it up on the next loan instead of losing the relationship. Offer conditions: new credit card, HELOC, consolidate cards, or open a bank account.</p>
+      </div>
+      <div class="card">
+        <h4>Dealers (Auto & Equipment)</h4>
+        <p>Short the payoff to acquire a high-demand pre-owned vehicle as a trade-in. Inventory that sells faster than new in many markets.</p>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <strong>Important:</strong> Credit score and type of vehicle matter. Maximum short is typically limited to $750–$1,500 depending on each circumstance. Going into a dealer blindfolded is not a good decision. Check your options first.
     </div>
   </section>
 
-  <section id="bids" style="background: var(--light);">
-    <div class="container">
-      <h2>Vehicles Up for Bidding</h2>
-      <p class="subtitle">Live example feed (demo data). Post yours today.</p>
-      <div class="bidding-column">
-        <div class="vehicle-card">
-          <div>
-            <strong>2021 Toyota Camry LE</strong><br>
-            <small>34,567 mi · Good · Clean Title · Sacramento, CA</small>
-          </div>
-          <div class="bid-amount">$19,250 top bid</div>
-        </div>
-        <div class="vehicle-card">
-          <div>
-            <strong>2019 Honda CR-V EX</strong><br>
-            <small>48,210 mi · Excellent · Clean Title · Roseville, CA</small>
-          </div>
-          <div class="bid-amount">$22,800 top bid</div>
-        </div>
-        <div class="vehicle-card">
-          <div>
-            <strong>2022 Ford F-150 XLT</strong><br>
-            <small>27,100 mi · Good · Clean Title · Stockton, CA</small>
-          </div>
-          <div class="bid-amount">$38,450 top bid</div>
-        </div>
+  <section id="cta" style="text-align: center; background: #f8f9fa; padding: 3rem 2rem;">
+    <h3>Become a Member &amp; Start Shopping</h3>
+    <p style="margin: 1rem 0 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">Join the list for membership launch. Shop your vehicle at any time to see potential payoff drops and trade faster with a lower payoff. All vehicle types sold in the US, including heavy equipment.</p>
+    
+    <form action="mailto:hello@tradeshort.app" method="post" enctype="text/plain">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required placeholder="Your full name">
       </div>
-      <div style="text-align:center; margin-top:2rem;">
-        <a href="#" class="cta">List Your Vehicle Now</a>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required placeholder="you@example.com">
       </div>
-    </div>
+      <div class="form-group">
+        <label for="zip">Zip Code</label>
+        <input type="text" id="zip" name="zip" required pattern="[0-9]{5}" placeholder="12345" maxlength="5">
+      </div>
+      <div class="form-group">
+        <label for="vehicle">Type of Vehicle</label>
+        <select id="vehicle" name="vehicle" required>
+          <option value="">Select type...</option>
+          <optgroup label="Passenger Vehicles">
+            <option value="Car">Car</option>
+            <option value="Truck">Truck</option>
+            <option value="SUV">SUV</option>
+            <option value="Van">Van / Minivan</option>
+            <option value="Motorcycle">Motorcycle</option>
+            <option value="RV">RV / Motorhome</option>
+            <option value="Trailer">Trailer</option>
+          </optgroup>
+          <optgroup label="Heavy Equipment (sold in USA)">
+            <option value="Bobcat">Bobcat</option>
+            <option value="Caterpillar">Caterpillar</option>
+            <option value="Excavator">Excavator</option>
+            <option value="Loader">Loader</option>
+            <option value="Skid Steer">Skid Steer</option>
+            <option value="Bulldozer">Bulldozer</option>
+            <option value="Backhoe">Backhoe</option>
+            <option value="Other Heavy Equipment">Other Heavy Equipment</option>
+          </optgroup>
+          <optgroup label="Other">
+            <option value="Boat">Boat</option>
+            <option value="ATV / UTV">ATV / UTV</option>
+            <option value="Other">Other</option>
+          </optgroup>
+        </select>
+      </div>
+      <button type="submit" class="cta-btn">Get Started</button>
+    </form>
+
+    <p class="disclaimer">
+      TradeShort.app is a membership and matching service. Become a member to shop your vehicle and see competitive bids that may help lower the amount needed to cover your payoff. Any reduction (“short”), new loan, or condition is subject to lender/dealer approval, creditworthiness, vehicle condition/inspection, and applicable law. Not a guarantee of payoff reduction or financing. Not financial, legal, or tax advice. Membership is coming soon and remains subject to regulatory review; it is not currently available for purchase. Always review terms carefully.
+    </p>
   </section>
 
   <footer>
-    <div class="container">
-      <p class="logo" style="margin-bottom:1rem;">tradeshor<span>.app</span></p>
-      <p>Post your vehicle to get bids today. Used vehicles are in high demand.</p>
-      <p style="margin-top:1.5rem; font-size:0.9rem; opacity:0.8;">Owner profiles · Dealer profiles · Vehicles up for Bidding column · Geolocation for owners, open to dealers at any distance.</p>
-      <p style="margin-top:1rem; font-size:0.85rem;">© 2026 tradeshor.app — All rights reserved.</p>
-    </div>
+    <p>&copy; 2026 TradeShort.app — Check your options. Know the real worth of your vehicle and your credit.</p>
   </footer>
 </body>
 </html>
