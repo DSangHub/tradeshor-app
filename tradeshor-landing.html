@@ -44,6 +44,16 @@
     footer { background: var(--navy); color: white; padding: 3rem 2rem; text-align: center; }
     footer a { color: var(--teal); }
     .phone-mock { max-width: 320px; margin: 2rem auto; border-radius: 24px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
+    .parade-wrap { overflow: hidden; background: #f1f5f9; padding: 1.5rem 0; position: relative; }
+    .parade-track { display: flex; gap: 1.25rem; width: max-content; animation: parade 40s linear infinite; }
+    .parade-wrap:hover .parade-track,
+    .parade-wrap:active .parade-track { animation-play-state: paused; }
+    @keyframes parade { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .parade-card { background: white; border-radius: 12px; padding: 1rem 1.25rem; min-width: 260px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); cursor: pointer; transition: transform 0.15s; }
+    .parade-card:hover { transform: translateY(-3px); }
+    .parade-card strong { display: block; color: var(--navy); }
+    .parade-card small { color: var(--gray); }
+    .parade-price { font-weight: 700; color: var(--teal); margin-top: 0.35rem; }
     @media (max-width: 640px) {
       header { flex-direction: column; gap: 0.75rem; }
       nav a { margin: 0 0.75rem; }
@@ -98,6 +108,16 @@
       <div class="phone-mock">
         <img src="imagine_images/qOHIj.jpg" alt="App vehicle listing and dealer bids" style="width:100%;">
       </div>
+    </div>
+  </section>
+
+  <section id="parade" class="parade-wrap">
+    <div class="container">
+      <h2 style="margin-bottom:0.5rem;">Trade Parade</h2>
+      <p class="subtitle" style="margin-bottom:1rem;">Vehicles up for bids — hover or tap to pause, click to view.</p>
+    </div>
+    <div class="parade-track" id="paradeTrack">
+      <!-- cards duplicated for seamless loop -->
     </div>
   </section>
 
@@ -191,5 +211,26 @@
       <p style="margin-top:1rem; font-size:0.85rem;">© 2026 tradeshor.app — All rights reserved.</p>
     </div>
   </footer>
+  <script>
+    const vehicles = [
+      { id: 1, title: '2021 Toyota Camry LE', meta: '34,567 mi · Good · Sacramento, CA', price: '$19,250' },
+      { id: 2, title: '2019 Honda CR-V EX', meta: '48,210 mi · Excellent · Roseville, CA', price: '$22,800' },
+      { id: 3, title: '2022 Ford F-150 XLT', meta: '27,100 mi · Good · Stockton, CA', price: '$38,450' },
+      { id: 4, title: '2020 Chevrolet Equinox', meta: '41,200 mi · Good · Sacramento, CA', price: '$16,900' },
+      { id: 5, title: '2018 Toyota Tacoma', meta: '62,400 mi · Excellent · Sacramento, CA', price: '$24,750' }
+    ];
+    const track = document.getElementById('paradeTrack');
+    function renderCards() {
+      const html = vehicles.map(v => `
+        <div class="parade-card" data-id="${v.id}" onclick="location.hash='#vehicle-${v.id}'">
+          <strong>${v.title}</strong>
+          <small>${v.meta}</small>
+          <div class="parade-price">${v.price} top bid</div>
+        </div>
+      `).join('');
+      track.innerHTML = html + html; // duplicate for infinite scroll
+    }
+    renderCards();
+  </script>
 </body>
 </html>
