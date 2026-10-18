@@ -73,6 +73,7 @@
 - One dealer → many bids
 - Geolocation used for relevance ranking but not hard filtering (dealers any distance)
 - Premier dealers receive early alerts for matching vehicles within 15–30 miles of their location (up to 5 preferred make/model pairs). $75 fee per vehicle purchased.
+- Platform fee: $175 per winning accepted vehicle (charged to the purchasing dealer).
 
 ## Tech Notes (MVP)
 - Auth: Supabase Auth or Firebase Auth (email + magic link / OTP)
