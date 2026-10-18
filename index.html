@@ -40,9 +40,14 @@
     .form-group input, .form-group select { width: 100%; padding: 0.7rem; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem; }
     .form-group select { background: white; }
     form { max-width: 500px; margin: 0 auto; }
+    .phone-fee { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin: 1.5rem 0; }
+    .fee-box { background: white; border: 2px solid var(--accent); border-radius: 8px; padding: 1rem 1.5rem; text-align: center; min-width: 160px; }
+    .fee-box strong { display: block; font-size: 1.6rem; color: var(--accent); }
+    .fee-box span { font-size: 0.85rem; color: var(--gray); }
     @media (max-width: 600px) {
       .hero h2 { font-size: 1.8rem; }
       header { flex-direction: column; gap: 0.5rem; }
+      nav a { margin: 0.3rem; }
     }
   </style>
 </head>
@@ -51,6 +56,7 @@
     <h1>Trade<span>Short</span>.app</h1>
     <nav>
       <a href="#how">How It Works</a>
+      <a href="#phones">Mobile Phones</a>
       <a href="#membership">Membership</a>
       <a href="#who">Who Benefits</a>
       <a href="#cta">Get Started</a>
@@ -78,6 +84,42 @@
         <h4>3. Reduce & Rebuild</h4>
         <p>A short (typically up to $750–$1,500 depending on credit, vehicle, and circumstances) generates a new loan and new possibilities if conditions are met.</p>
       </div>
+    </div>
+  </section>
+
+  <section id="phones" style="background:#f8f9fa;">
+    <h3>Mobile Phones</h3>
+    <p style="text-align:center; max-width:800px; margin:0 auto 1rem;">Mobile Phones are getting expensive with contracts up to 36 months. Now you have an option to trade in faster with a lesser Payoff. A small one time fee can give you freedom at trade up or down and get a phone with the newest technology.</p>
+    <p style="text-align:center; max-width:800px; margin:0 auto 1.5rem; color:var(--gray); font-size:0.95rem;">Terms and conditions apply.</p>
+
+    <div class="phone-fee">
+      <div class="fee-box">
+        <strong>$4.95</strong>
+        <span>Retail under $500</span>
+      </div>
+      <div class="fee-box">
+        <strong>$9.95</strong>
+        <span>Retail $500 and up</span>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h4>List the Phone</h4>
+        <p>Model, remaining payoff, current carrier, and condition. One-time fee based on retail price.</p>
+      </div>
+      <div class="card">
+        <h4>Rival Carriers Bid</h4>
+        <p>TradeShort solicits bids from rival mobile phone carriers to short the payoff for a fee. Highest short wins.</p>
+      </div>
+      <div class="card">
+        <h4>Trade Faster</h4>
+        <p>You get to trade in your phone faster with a lesser payoff. Unlock earlier and move to newer technology.</p>
+      </div>
+    </div>
+
+    <div class="highlight" style="margin-top:2rem;">
+      <strong>How the short works:</strong> A rival carrier may pay down part of your remaining balance if you switch. TradeShort is the marketplace that surfaces the best short. The $4.95 / $9.95 fee is the listing cost — not the short itself. Any reduction comes from the carrier, not TradeShort.
     </div>
   </section>
 
@@ -129,8 +171,8 @@
   </section>
 
   <section id="cta" style="text-align: center; background: #f8f9fa; padding: 3rem 2rem;">
-    <h3>Become a Member &amp; Start Shopping</h3>
-    <p style="margin: 1rem 0 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">Join the list for membership launch. Shop your vehicle at any time to see potential payoff drops and trade faster with a lower payoff. All vehicle types sold in the US, including heavy equipment.</p>
+    <h3>Become a Member & Start Shopping</h3>
+    <p style="margin: 1rem 0 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">Join the list for membership launch. Shop your vehicle at any time to see potential payoff drops and trade faster with a lower payoff. All vehicle types sold in the US, including heavy equipment. Mobile phone listings also welcome.</p>
     
     <form action="mailto:hello@tradeshort.app" method="post" enctype="text/plain">
       <div class="form-group">
@@ -168,6 +210,10 @@
             <option value="Backhoe">Backhoe</option>
             <option value="Other Heavy Equipment">Other Heavy Equipment</option>
           </optgroup>
+          <optgroup label="Mobile Phones">
+            <option value="Phone under $500">Mobile Phone — Retail under $500 ($4.95)</option>
+            <option value="Phone $500+">Mobile Phone — Retail $500+ ($9.95)</option>
+          </optgroup>
           <optgroup label="Other">
             <option value="Boat">Boat</option>
             <option value="ATV / UTV">ATV / UTV</option>
@@ -178,8 +224,8 @@
       <button type="submit" class="cta-btn">Get Started</button>
     </form>
 
-    <p class="disclaimer">
-      TradeShort.app is a membership and matching service. Become a member to shop your vehicle and see competitive bids that may help lower the amount needed to cover your payoff. Any reduction (“short”), new loan, or condition is subject to lender/dealer approval, creditworthiness, vehicle condition/inspection, and applicable law. Not a guarantee of payoff reduction or financing. Not financial, legal, or tax advice. Membership is coming soon and remains subject to regulatory review; it is not currently available for purchase. Always review terms carefully.
+    <p class="disclaimer" style="margin-top:2rem; font-size:0.85rem; color:var(--gray); max-width:800px; margin-left:auto; margin-right:auto;">
+      TradeShort.app is a membership and matching service. Become a member to shop your vehicle and see competitive bids that may help lower the amount needed to cover your payoff. Any reduction (“short”), new loan, or condition is subject to lender/dealer approval, creditworthiness, vehicle condition/inspection, and applicable law. Not a guarantee of payoff reduction or financing. Not financial, legal, or tax advice. Membership is coming soon and remains subject to regulatory review; it is not currently available for purchase. Mobile phone shorts are carrier switch incentives, not insurance. Always review terms carefully.
     </p>
   </section>
 
